@@ -6,4 +6,4 @@ export const AppContainer = styled.div`
     width: 100vw;
 `;
 
-export const TestText = styled.p``;
+export const StatsContainer = styled.div``;

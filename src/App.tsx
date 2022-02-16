@@ -1,11 +1,16 @@
 import React from 'react';
-import { AppContainer, TestText } from './App.styled';
+import { Provider as ReduxProvider } from 'react-redux'
+import { store } from './store';
+import { AppContainer } from './App.styled';
+import { Lobby } from './screens';
 
-function App() {
+const App = () => {
   return (
-    <AppContainer>
-      <TestText>TEST</TestText>
-    </AppContainer>
+    <ReduxProvider store={store}>
+      <AppContainer>
+        <Lobby />
+      </AppContainer>
+    </ReduxProvider>
   );
 }
 
