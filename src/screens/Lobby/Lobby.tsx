@@ -1,14 +1,13 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { TestingStats } from '../../assets/testing/Character';
 import StatsBoard from '../../components/organisms/StatsBoard';
 import { RootState } from '../../store';
 
 const Lobby = () => {
-    const { selectedCharacter } = useSelector((state : RootState) => state.user);
+    const { selectedCharacter, savedStats } = useSelector((state : RootState) => state.user);
     return(
         <>
-            <StatsBoard stats={selectedCharacter} />
+            <StatsBoard stats={selectedCharacter} savedStats={savedStats} />
         </>
     )
 }
