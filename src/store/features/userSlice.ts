@@ -7,12 +7,16 @@ interface UserState {
   connected: boolean;
   selectedCharacter: Stats;
   savedStats: Stats,
+  canCharacterFight: Date;
+  characterRank: number;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   connected: true,
   selectedCharacter: TestingStats,
   savedStats: TestingStats,
+  canCharacterFight: new Date(),
+  characterRank: 1,
 }
 
 
@@ -73,10 +77,23 @@ export const userSlice = createSlice({
     },
     saveStats(state : UserState) {
       state.savedStats = state.selectedCharacter;
+    },
+    endFight(state : UserState, action: PayloadAction<{ won : boolean}>) {
+
+      if ( action.payload.won ) {
+        state.savedStats.skillpoints += 1;
+        state.selectedCharacter.skillpoints += 1;
+        state.characterRank += 1;
+      } else {
+        state.canCharacterFight = new Date(new Date(state.canCharacterFight).setHours(state.canCharacterFight.getHours() + 1));
+        if(state.characterRank > 1) {
+          state.characterRank -= 1;
+        }
+      }
     }
   },
 })
 
-export const { addPoint, removePoint, saveStats } = userSlice.actions
+export const { addPoint, removePoint, saveStats, endFight } = userSlice.actions
 
 export default userSlice.reducer
