@@ -1,4 +1,9 @@
 
+export type Character = {
+    name: string,
+    rank: number,
+    stats: Stats,
+}
 
 export enum Skills {
     Skillpoints= "skillpoints",

@@ -1,12 +1,16 @@
 
+
+export const BASE_ATTACK = 1;
+export const BASE_DEFENSE = 0;
+export const BASE_MAGIC = 0;
+export const BASE_HEALTH = 10;
+
+
 export const TestingStats = {
     skillpoints: 12,
-    health: 10,
-    attack: 0,
-    defense: 0,
-    magic: 0
+    health: BASE_HEALTH,
+    attack: BASE_ATTACK,
+    defense: BASE_DEFENSE,
+    magic: BASE_MAGIC
 }
-
-
-
 
