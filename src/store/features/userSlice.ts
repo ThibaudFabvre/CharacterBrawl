@@ -179,7 +179,8 @@ export const userSlice = createSlice({
       })
     },
     removeCharacter(state: UserState, action: PayloadAction<{ index : number }>) {
-      state.characterList = state.characterList.splice(action.payload.index,1);
+      state.characterList = state.characterList.filter((character, index) => state.characterList[index] !== state.characterList[action.payload.index]);
+      console.log(state.characterList);
     }, 
     signUp(state : UserState, action: PayloadAction<{ email : string, password : string, name : string } >) {
       // TO DO SIGN UP
