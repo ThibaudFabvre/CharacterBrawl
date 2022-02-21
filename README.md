@@ -15,8 +15,8 @@
  The key pain points of the projects are its lack of clarity towards its usability (is it multiplayer or solo) and the lack of thought behind the combat system (is it turn based or not).
  Several requirements contradicted each other so there was a need to modify the criterias.
  
- 1- The system is turn based (meaning there cannot be a draw in a battle)
- 2- The game is a solo game
+- The system is turn based (meaning there cannot be a draw in a battle)
+- The game is a solo game
  
  # Vision
  Due to the requirements mostly centered around scalability here are the following points that have been or should have been addressed:
