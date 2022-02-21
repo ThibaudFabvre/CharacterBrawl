@@ -1,9 +1,9 @@
 
 # Starting the app
 
- 1- Download the project by doing ```git clone https://github.com/ThibaudFabvre/CharacterBrawl.git```
- 2- Go inside the project by doing ``` cd character-brawl```
- 3- Use the command ```yarn start``` to launch the project
+ - Download the project by doing ```git clone https://github.com/ThibaudFabvre/CharacterBrawl.git```
+ - Go inside the project by doing ``` cd character-brawl```
+ - Use the command ```yarn start``` to launch the project
  
  
  
