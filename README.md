@@ -8,8 +8,8 @@
  
  
  # Key notes
- -> Some of the project initial criterias have been modified
- -> The project is not linked to the backend due to a CSRF token issue on the back-end part (probably the way I request the list of opponents) and because of lack of time.
+ - Some of the project initial criterias have been modified
+ - The project is not linked to the backend due to a CSRF token issue on the back-end part (probably the way I request the list of opponents) and because of lack of time.
  
  # Analysis of the project
  The key pain points of the projects are its lack of clarity towards its usability (is it multiplayer or solo) and the lack of thought behind the combat system (is it turn based or not).
