@@ -1,4 +1,4 @@
-import { TestingStats } from "../../testing/Character";
+import { DEFAULT_STATS } from "../../testing/Character";
 import { fightATurn } from "./fight";
 
 
@@ -11,11 +11,10 @@ describe('fightATurn', () => {
         magic: 2
     };
 
-    const defenderStats = TestingStats;
     
-    const result = fightATurn({attacker: attackerStats, defender: defenderStats});
+    const result = fightATurn({attacker: attackerStats, defender: DEFAULT_STATS});
 
     it('should calculate damage by substracting attacker dice roll number to defender defense', () => {
-        expect(result.damage).toEqual(result.diceRoll - defenderStats.defense);
+        expect(result.damage).toEqual(result.diceRoll - DEFAULT_STATS.defense);
     })
 });

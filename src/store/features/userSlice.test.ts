@@ -1,22 +1,26 @@
-import { TestingStats } from '../../assets/testing/Character';
+import { DEFAULT_STATS } from '../../assets/testing/Character';
 import reducer, { endFight, initialState, UserState } from './userSlice';
 
 describe('[ Reducer ] endFight()', () => {
 
     const previousState : UserState = {
-        connected: true,
+        userId: 1,
         characterTemporaryCopy: {
+          id: 0,
+          canCharacterFight: 0,
           name: 'Fio',
           rank: 3,
-          stats: TestingStats,
+          stats: DEFAULT_STATS,
         },
         savedCharacter: {
+          id: 0,
+          canCharacterFight: 0,
           name: 'Fio',
           rank: 3,
-          stats: TestingStats,
+          stats: DEFAULT_STATS,
         },
-        canCharacterFight: new Date().getHours(),
         opponent: {
+          id: 1,
           name: 'Han',
           rank: 3,
           stats: {
@@ -28,6 +32,7 @@ describe('[ Reducer ] endFight()', () => {
           },
         },
         turns: [],
+        characterList: [],
         fightStatus: 'none',
       };
 
@@ -54,7 +59,7 @@ describe('[ Reducer ] endFight()', () => {
     });
     it('should disable user ability to fight for 1 hour', () => {
         const newState = reducer(previousState, endFight({won: false}));
-        expect(newState.canCharacterFight).toBeGreaterThan(previousState.canCharacterFight);
+        expect(newState.savedCharacter.canCharacterFight).toBeGreaterThan(previousState.savedCharacter.canCharacterFight);
     })
 })
 

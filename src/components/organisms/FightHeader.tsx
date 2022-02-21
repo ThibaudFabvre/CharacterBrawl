@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { FightStatus } from '../../types/fight/turn';
 
 type Props = {

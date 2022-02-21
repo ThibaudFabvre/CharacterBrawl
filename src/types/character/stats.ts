@@ -1,5 +1,14 @@
 
 export type Character = {
+    id: number,
+    name: string,
+    rank: number,
+    stats: Stats,
+    canCharacterFight: number;
+}
+
+export type Opponent = {
+    id: number,
     name: string,
     rank: number,
     stats: Stats,

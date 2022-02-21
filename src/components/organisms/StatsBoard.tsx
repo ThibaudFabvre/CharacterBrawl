@@ -1,6 +1,6 @@
 
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPoint, removePoint, saveStats } from '../../store/features/userSlice';
 import { Skill,  Stats } from '../../types/character/stats';

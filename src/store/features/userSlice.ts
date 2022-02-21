@@ -1,34 +1,38 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TestingStats } from '../../assets/testing/Character';
+import { SignUp } from '../../api/user/user.api';
+import { DEFAULT_STATS } from '../../assets/testing/Character';
 import { fightATurn } from '../../assets/utils/fights/fight';
-import { randomIntFromInterval } from '../../assets/utils/range';
-import { Character, Skill, Stats } from '../../types/character/stats';
+import { Character, Opponent, Skill } from '../../types/character/stats';
 import { FightStatus, Turn } from '../../types/fight/turn';
 
 export interface UserState {
-  connected: boolean;
+  userId: number,
   characterTemporaryCopy: Character;
   savedCharacter: Character,
-  canCharacterFight: number;
-  opponent: Character;
+  opponent: Opponent;
   turns: Array<Turn>;
   fightStatus: FightStatus;
+  characterList: Array<Character>;
 }
 
 export const initialState: UserState = {
-  connected: true,
+  userId: 0,
   characterTemporaryCopy: {
     name: 'Fio',
     rank: 1,
-    stats: TestingStats,
+    stats: DEFAULT_STATS,
+    canCharacterFight: 0,
+    id: 1,
   },
   savedCharacter: {
     name: 'Fio',
     rank: 1,
-    stats: TestingStats,
+    stats: DEFAULT_STATS,
+    canCharacterFight: 0,
+    id: 1,
   },
-  canCharacterFight: new Date().getHours(),
   opponent: {
+    id: 1,
     name: 'Han',
     rank: 1,
     stats: {
@@ -41,6 +45,7 @@ export const initialState: UserState = {
   },
   turns: [],
   fightStatus: 'none',
+  characterList: [],
 }
 
 export const userSlice = createSlice({
@@ -108,7 +113,7 @@ export const userSlice = createSlice({
         state.characterTemporaryCopy.stats.skillpoints += 1;
         state.savedCharacter.rank += 1;
       } else {
-        state.canCharacterFight = state.canCharacterFight + 3600;
+        state.savedCharacter.canCharacterFight = state.savedCharacter.canCharacterFight + 3600;
         if(state.savedCharacter.rank > 1) {
           state.savedCharacter.rank -= 1;
         }
@@ -160,9 +165,32 @@ export const userSlice = createSlice({
         state.fightStatus='lost';
       }
     },
+    selectCharacter(state: UserState, action : PayloadAction<Character>) {
+      state.savedCharacter = action.payload;
+    },
+    addNewCharacter(state: UserState, action: PayloadAction<{ characterName : string }>) {
+      
+      state.characterList = state.characterList.concat({
+        id: 0,
+        name: action.payload.characterName,
+        rank: 1, 
+        stats: DEFAULT_STATS, 
+        canCharacterFight: 0,
+      })
+    },
+    removeCharacter(state: UserState, action: PayloadAction<{ index : number }>) {
+      state.characterList = state.characterList.splice(action.payload.index,1);
+    }, 
+    signUp(state : UserState, action: PayloadAction<{ email : string, password : string, name : string } >) {
+      // TO DO SIGN UP
+    },
+    signIn(state : UserState, action: PayloadAction<{ email : string, password : string } >) {
+      // TO DO LOGIN
+    }
   },
+
 })
 
-export const { addPoint, removePoint, saveStats, endFight, initiateFight } = userSlice.actions
+export const { addPoint, removePoint, saveStats, endFight, initiateFight, addNewCharacter, removeCharacter, signIn, signUp, selectCharacter } = userSlice.actions
 
 export default userSlice.reducer
